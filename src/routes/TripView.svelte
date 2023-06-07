@@ -1,12 +1,13 @@
 <script>
     import { onMount } from "svelte";
-    import TripDay from "./TripDay.svelte";
+    import { base } from "$app/paths";
     import { Trip } from "./trip.js";
+    import TripDay from "./TripDay.svelte";
 
     let tripData;
 
     onMount(async () => {
-        const response = await fetch("/trip.txt");
+        const response = await fetch(base + "/trip");
         tripData = new Trip(await response.text());
     });
 </script>
