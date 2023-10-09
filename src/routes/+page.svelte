@@ -1,29 +1,52 @@
 <script>
-    import TripView from "./TripView.svelte";
+    import TripSelection from "./TripSelection.svelte";
+    import { isAdmin } from "$lib/admin.js"
+    import { base } from "$app/paths";
+    import { t } from "$lib/i18n.js";
+
+    export let data;
 </script>
 
 <svelte:head>
-    <title>ÖV-Kantonsreise</title>
+    <title>Trip Viewer</title>
 </svelte:head>
 <div id="app">
-    <h1>Kantonsreise ÖV-Variante</h1>
-    <TripView />
+    {#if $isAdmin}
+        <h1>{$t("create_new_trip")}</h1>
+        <form action="{base}/trip/new" method="get">
+            <input type="text" name="name" placeholder="Trip Name" required />
+            <button type="submit">{$t("create")}</button>
+        </form>
+    {/if}
+    <h1>{$t("trip_list")}</h1>
+    <TripSelection tripList={data.tripList} />
+    {#if !$isAdmin}
+    <span>{$t("non_admin_note")}</span>
+    {/if}
 </div>
 
 <style>
-    :global(*) {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
     #app {
-        padding: 20px;
-        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
     }
 
     h1 {
-        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    input, button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #eee;
+        color: black;
     }
 </style>
