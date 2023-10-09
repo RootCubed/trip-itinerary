@@ -1,6 +1,7 @@
 <script>
     import { isAdmin } from "$lib/admin.js";
     import { locale } from "$lib/i18n.js";
+    import { base } from "$app/paths.js";
 
     export let data;
 
@@ -8,6 +9,10 @@
 
     $: $isAdmin = data.isAdmin;
 </script>
+
+<svelte:head>
+    <link rel="icon" href={`${base}/favicon.ico`} />
+</svelte:head>
 
 <div class="floating-header">
     {#if $isAdmin}
