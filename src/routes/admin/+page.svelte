@@ -25,8 +25,12 @@
 
     #app {
         min-height: 100vh;
-        padding: 20px;
         background-color: #f5f5f5;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
     h1 {

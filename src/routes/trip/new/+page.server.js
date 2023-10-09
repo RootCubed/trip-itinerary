@@ -5,7 +5,7 @@ import { base } from "$app/paths";
 
 export async function load({ url, cookies }) {
     if (!isValidSessionToken(cookies.get("session"))) {
-        return redirect(`${base}/login`);
+        throw redirect(302, `${base}/admin`);
     }
 
     const tripName = url.searchParams.get("name");

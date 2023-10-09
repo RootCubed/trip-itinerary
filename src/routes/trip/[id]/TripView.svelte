@@ -30,8 +30,11 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(tripData)
-        }).catch(() => {
-            window.location = `${base}/admin`;
+        }).then(r => {
+            if (!r.ok) {
+                alert("Your login session has expired. Please log in again.");
+                window.location.href = `${base}/admin`;
+            }
         });
     } 
     
