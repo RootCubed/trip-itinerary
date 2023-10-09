@@ -1,5 +1,6 @@
 <script>
     import { isAdmin } from "$lib/admin.js";
+    import { base } from "$app/paths";
     import { t } from "$lib/i18n.js";
 
     export let tripList;
@@ -60,7 +61,7 @@
     <tbody>
         {#each tripList as trip}
             <tr>
-                <td><a href="trip/{trip.id}">{trip.name}</a></td>
+                <td><a href="{base}/trip/{trip.id}">{trip.name}</a></td>
                 <td>{trip.created.toLocaleString()}</td>
                 {#if $isAdmin}
                     <td>{$t(trip.visibility)}</td>

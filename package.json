@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "vite dev --host",
 		"build": "vite build",
-		"start": "npm run build && node index.js"
+		"preview": "vite preview"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-node": "^1.2.4",

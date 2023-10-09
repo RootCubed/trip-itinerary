@@ -1,7 +1,15 @@
 import fs from "fs";
 import { randomUUID } from "crypto";
 
-let trips = JSON.parse(fs.readFileSync("trips/index.json", "utf-8"));
+export const prerender = false;
+
+let trips = {};
+if (!fs.existsSync("trips")) {
+    fs.mkdirSync("trips");
+}
+if (fs.existsSync("trips/index.json")) {
+    trips = JSON.parse(fs.readFileSync("trips/index.json", "utf-8"));
+}
 
 export function getTripIDs() {
     return Object.keys(trips);

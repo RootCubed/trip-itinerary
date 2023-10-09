@@ -24,4 +24,5 @@ export default {
     "add": "Hinzufügen...",
     "title": "Titel",
     "details": "Details",
+    "back": "← Zurück zur Übersicht",
 }

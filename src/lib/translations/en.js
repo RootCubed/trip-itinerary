@@ -24,4 +24,5 @@ export default {
     "add": "Add...",
     "title": "Title",
     "details": "Details",
+    "back": "← Back to overview",
 }

@@ -1,5 +1,7 @@
 <script>
     import TripView from "./TripView.svelte";
+    import { base } from "$app/paths";
+    import { t } from "$lib/i18n.js"
 
 	export let data;
 </script>
@@ -8,7 +10,7 @@
     <title>{data.tripName}</title>
 </svelte:head>
 <div id="app">
-    <h1>Trip Viewer</h1>
+    <a id="back-btn" href="{base}/">{$t("back")}</a>
     <TripView tripData={data.tripData} />
 </div>
 
@@ -18,14 +20,21 @@
         padding: 20px;
     }
 
+    #back-btn {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #2e4ae7;
+        text-decoration: none;
+    }
+
     @media print {
         #app {
             padding: 0;
             background-color: #fff;
         }
-    }
 
-    h1 {
-        margin-bottom: 20px;
+        #back-btn {
+            display: none;
+        }
     }
 </style>
